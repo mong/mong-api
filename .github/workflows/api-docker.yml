@@ -16,22 +16,6 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_DEFAULT_REGION: 'eu-west-1'
     steps:
-      - name: Set release variables
-        if: ${{ github.event_name == 'release' }}
-        run: |
-          echo "S3Key='prod-Dockerrun.aws.json'" >> $GITHUB_ENV
-          echo "env_name=prod-mong-api" >> $GITHUB_ENV
-      - name: Set QA variables
-        if: ${{ github.event_name == 'push' }}
-        run: |
-          echo "S3Key='qa-Dockerrun.aws.json'" >> $GITHUB_ENV
-          echo "env_name=qa-mong-api" >> $GITHUB_ENV
-      - name: Echo stuff
-        run: |
-          echo "S3Key:"
-          echo ${{ env.S3Key }}
-          echo "env_name:"
-          echo ${{ env.env_name }}
       - name: Check out the repo
         uses: actions/checkout@v2
       - name: Lint Dockerfile
@@ -60,9 +44,13 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
-      - name: elasticbeanstalk Step 1
-        if: github.event_name == 'pull_request'
-        run: aws elasticbeanstalk create-application-version --application-name mong-api --source-bundle S3Bucket="elasticbeanstalk-eu-west-1-247247832514",S3Key=${{ env.S3Key }} --version-label ${GITHUB_SHA:0:8} --description "Test cli deploy"
-      - name: elasticbeanstalk Step 2
-        if: github.event_name == 'pull_request'
-        run: aws elasticbeanstalk update-environment --environment-name ${{ env.env_name }} --version-label ${GITHUB_SHA:0:8}
+      - name: elasticbeanstalk for releases
+        if: ${{ github.event_name == 'release' }}
+        run: |
+          aws elasticbeanstalk create-application-version --application-name mong-api --source-bundle S3Bucket="elasticbeanstalk-eu-west-1-247247832514",S3Key="prod-Dockerrun.aws.json" --version-label ${GITHUB_SHA:0:8} --description "Release deploy"
+          aws elasticbeanstalk update-environment --environment-name prod-mong-api --version-label ${GITHUB_SHA:0:8}
+      - name: elasticbeanstalk for master commits
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          aws elasticbeanstalk create-application-version --application-name mong-api --source-bundle S3Bucket="elasticbeanstalk-eu-west-1-247247832514",S3Key="qa-Dockerrun.aws.json" --version-label ${GITHUB_SHA:0:8} --description "Master commits deploy"
+          aws elasticbeanstalk update-environment --environment-name qa-mong-api --version-label ${GITHUB_SHA:0:8}
