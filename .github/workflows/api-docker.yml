@@ -31,7 +31,7 @@ jobs:
           echo "S3Key:"
           echo ${{ env.S3Key }}
           echo "env_name:"
-          echo ${{ env_name }}
+          echo ${{ env.env_name }}
       - name: Check out the repo
         uses: actions/checkout@v2
       - name: Lint Dockerfile
