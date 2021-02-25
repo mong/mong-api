@@ -12,11 +12,24 @@ jobs:
     name: Push Docker image to docker hub
     runs-on: ubuntu-latest
     env:
-      REACT_APP_API_HOST: "https://d2mrl4o83i9jyx.cloudfront.net"
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_DEFAULT_REGION: 'eu-west-1'
     steps:
+      - name: Set release variables
+        if: github.event_name == 'release'
+        run: |
+          echo "S3Key='prod-Dockerrun.aws.json'" >> $GITHUB_ENV
+          echo "env_name=prod-mong-api" >> $GITHUB_ENV
+          echo "version_label=${GITHUB_REF:10:6}" >> $GITHUB_ENV
+          echo "descr='Release tag deploy'" >> $GITHUB_ENV
+      - name: Set QA variables
+        if: github.event_name == 'push'
+        run: |
+          echo "S3Key='qa-Dockerrun.aws.json'" >> $GITHUB_ENV
+          echo "env_name=qa-mong-api" >> $GITHUB_ENV
+          echo "version_label=${GITHUB_SHA:0:7}" >> $GITHUB_ENV
+          echo "descr='Master commits deploy'" >> $GITHUB_ENV
       - name: Check out the repo
         uses: actions/checkout@v2
       - name: Lint Dockerfile
@@ -45,13 +58,8 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
-      - name: elasticbeanstalk for releases
-        if: ${{ github.event_name == 'release' }}
+      - name: Update elasticbeanstalk
+        if: github.event_name != 'pull_request'
         run: |
-          aws elasticbeanstalk create-application-version --application-name mong-api --source-bundle S3Bucket="elasticbeanstalk-eu-west-1-247247832514",S3Key="prod-Dockerrun.aws.json" --version-label ${GITHUB_REF:10:6} --description "Release deploy"
-          aws elasticbeanstalk update-environment --environment-name prod-mong-api --version-label ${GITHUB_REF:10:6}
-      - name: elasticbeanstalk for master commits
-        if: ${{ github.event_name == 'push' }}
-        run: |
-          aws elasticbeanstalk create-application-version --application-name mong-api --source-bundle S3Bucket="elasticbeanstalk-eu-west-1-247247832514",S3Key="qa-Dockerrun.aws.json" --version-label ${GITHUB_SHA:0:7} --description "Master commits deploy"
-          aws elasticbeanstalk update-environment --environment-name qa-mong-api --version-label ${GITHUB_SHA:0:7}
+          aws elasticbeanstalk create-application-version --application-name mong-api --source-bundle S3Bucket="elasticbeanstalk-eu-west-1-247247832514",S3Key=${{ env.S3Key }} --version-label ${{ env.version_label }} --description ${{ env.descr }}
+          aws elasticbeanstalk update-environment --environment-name ${{ env.env_name }} --version-label ${{ env.version_label }}
