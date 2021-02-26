@@ -11,8 +11,8 @@ const app = express();
 
 app.use(cors());
 
-const BROWSER_MAX_AGE = 60 * 60 * 24;
-const CDN_MAX_AGE = 60 * 60 * 24 * 365;
+const BROWSER_MAX_AGE = 60;
+const CDN_MAX_AGE = 60 * 60;
 const cache: RequestHandler = (req, res, next) => {
   res.set(
     "cache-control",
