@@ -1,4 +1,4 @@
-import { QueryBuilder } from "knex";
+import { Knex } from "knex";
 import db from "../db";
 
 export interface Filter {
@@ -27,7 +27,7 @@ export const all = (filter?: Filter): Promise<Indicator[]> =>
     .where("include", 1)
     .modify(withFilter, filter);
 
-function withFilter(builder: QueryBuilder, filter?: Filter) {
+function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
   if (filter?.unit_level) {
     builder.andWhere("unit_level", filter.unit_level);
   }
