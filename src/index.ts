@@ -1,5 +1,11 @@
 import express, { RequestHandler } from "express";
 import cors from "cors";
+
+//router
+import registerInfoRouter from "./routes/registerInfo";
+import registerDataRouter from "./routes/registerData";
+
+//controller
 import * as Description from "./controllers/Description";
 import * as Indicator from "./controllers/Indicator";
 import * as Legacy from "./controllers/Legacy";
@@ -10,6 +16,7 @@ const PORT = process.env.PORT ?? 4000;
 const app = express();
 
 app.use(cors());
+app.use(express.json());
 
 const BROWSER_MAX_AGE = 60 * 60;
 const CDN_MAX_AGE = 60 * 60 * 24;
@@ -22,6 +29,9 @@ const cache: RequestHandler = (req, res, next) => {
 };
 
 // Routes
+app.use("/kvalitetsregistre", cache, registerDataRouter);
+app.use("/registerInfo", cache, registerInfoRouter);
+
 app.get("/", (_, res) => res.json({ status: "OK" }));
 app.get("/description", cache, Description.index);
 app.get("/indicator", cache, Indicator.index);
