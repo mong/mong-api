@@ -36,6 +36,5 @@ function parseQuery(req: Request): Query {
     query.filter.register = req.params.register;
   }
 
-
   return query;
 }
