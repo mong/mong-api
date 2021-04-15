@@ -83,37 +83,3 @@ export const nestTuNames = (tu_names: TuName[], opts_tu: OptsTu[]) => {
   return nested_tu_names;
 };
 
-/*
-const opts_tu = [
-  { label: "Sykehus", options: opts_hosp },
-  { label: "HF", options: opts_hf },
-  { label: "RHF", options: opts_rhf },
-];
-
-
-for (let iRhf = tu_structure.length - 1; iRhf > -1; iRhf--) {
-  if (opts_rhf.every((rhf) => rhf.value !== tu_structure[iRhf].rhf)) {
-    tu_structure.splice(iRhf, 1);
-  }
-
-  const hfArray = tu_structure[iRhf] ? tu_structure[iRhf].hf : [];
-  for (let iHf = hfArray.length - 1; iHf > -1; iHf--) {
-    if (opts_hf.every((hf) => hf.value !== hfArray[iHf].hf)) {
-      hfArray.splice(iHf, 1);
-    }
-
-    const hospArray = hfArray[iHf] ? hfArray[iHf].hospital : [];
-    for (let iHosp = hospArray.length - 1; iHosp > -1; iHosp--) {
-      if (opts_hosp.every((hosp) => hosp.value !== hospArray[iHosp])) {
-        hospArray.splice(iHosp, 1);
-      }
-    }
-  }
-}
-
-
-
-
-
-
-*/
