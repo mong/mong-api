@@ -79,7 +79,7 @@ export const medField: MedFieldInterface[] = [
   {
     shortName: "gyn",
     name: "Gynekologi",
-    registers: ["nger", "kvinl_inkontinens"],
+    registers: ["nger", "nkir"],
   },
   {
     shortName: "nyre",
