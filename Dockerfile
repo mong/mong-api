@@ -2,8 +2,7 @@ FROM node:14.15-alpine as builder
 WORKDIR /app
 COPY package*.json ./
 COPY . .
-RUN npm install
-RUN npm run build
+RUN npm install && npm run build
 
 FROM node:14.15-alpine
 WORKDIR /app
