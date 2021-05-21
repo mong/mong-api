@@ -1,3 +1,3 @@
-import { medField } from "../../addToDb/medfield";
+import { medField, MedFieldInterface } from "../../addToDb/medfield";
 
-export default () => medField;
+export default (): MedFieldInterface[] => medField;

@@ -29,7 +29,7 @@ export const descriptionModel = (
     .from("ind")
     .leftJoin("registry", "ind.registry_id", "registry.id")
     .modify(withFilter, filter)
-    .where("registry_id", function (this: any) {
+    .where("registry_id", function (this: Knex) {
       this.select("id").from("registry").where("name", register);
     });
 

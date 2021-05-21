@@ -39,16 +39,24 @@ export const distinctUnitNamesRegister = (
 
 function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
   if (filter?.register && filter?.register !== "all") {
-    builder.whereIn("ind_id", function (this: any) {
+    builder.whereIn("ind_id", function (this: Knex.QueryBuilder) {
       this.select("ind.id")
         .from("ind")
-        .where("registry_id", function (this: any) {
-          this.select("id").from("registry").where("name", filter.register);
-        });
-    });
+        .modify(registerFilter, filter.register ?? "")
+    })
   }
 }
 
+function registerFilter(
+  builder: Knex.QueryBuilder,
+  registerName: string
+) {
+  builder.where("registry_id", function (this: Knex.QueryBuilder) {
+    this.select("id")
+      .from("registry")
+      .where("name", registerName);
+  });
+}
 export const unitNamesAllLevels = (): Promise<TuName[]> =>
   db
     .distinct(

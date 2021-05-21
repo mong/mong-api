@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import {
   descriptionController,
   indicatorsContoller,
@@ -14,6 +14,6 @@ Router.get("/:register/descriptions", descriptionController);
 Router.get("/:register/indicators", indicatorsContoller);
 
 //reg all-all eller per register
-Router.get("/:register/unit_names", unitNamesContoller);
+Router.get("/:register/unitNames", unitNamesContoller);
 
 export default Router;
