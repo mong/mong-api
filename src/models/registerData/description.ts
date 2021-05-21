@@ -12,7 +12,7 @@ export interface Description {
   min_denominator: number | null;
   level_green: number | null;
   level_yellow: number | null;
-  level_direction: number;
+  level_direction: number | null;
   short_description: string | null;
   long_description: string | null;
   registry_id: number;
