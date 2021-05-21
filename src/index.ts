@@ -32,8 +32,8 @@ const cache: RequestHandler = (req, res, next) => {
   next();
 };
 // Routes
-app.use("/kvalitetsregistre", cache, registerDataRouter);
-app.use("/registerInfo", cache, registerInfoRouter);
+app.use("/data", cache, registerDataRouter);
+app.use("/info", cache, registerInfoRouter);
 
 app.get("/", (_, res) => res.json({ status: "OK 123" }));
 app.get("/description", cache, Description.index);
