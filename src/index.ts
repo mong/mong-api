@@ -1,4 +1,5 @@
 import express, { RequestHandler } from "express";
+import compression from "compression";
 import cors from "cors";
 
 //router
@@ -16,6 +17,9 @@ const PORT = process.env.PORT ?? 4000;
 const app = express();
 
 app.use(cors());
+app.use(compression({
+  level: 6
+}))
 app.use(express.json());
 
 const BROWSER_MAX_AGE = 60 * 60;
@@ -27,7 +31,6 @@ const cache: RequestHandler = (req, res, next) => {
   );
   next();
 };
-
 // Routes
 app.use("/kvalitetsregistre", cache, registerDataRouter);
 app.use("/registerInfo", cache, registerInfoRouter);
