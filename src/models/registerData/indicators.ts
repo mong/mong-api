@@ -38,19 +38,13 @@ function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
     builder.whereIn("ind_id", function (this: Knex.QueryBuilder) {
       this.select("ind.id")
         .from("ind")
-        .modify(registerFilter, filter.register ?? "")
-    })
-
+        .modify(registerFilter, filter.register ?? "");
+    });
   }
 }
 
-function registerFilter(
-  builder: Knex.QueryBuilder,
-  registerName: string
-) {
+function registerFilter(builder: Knex.QueryBuilder, registerName: string) {
   builder.where("registry_id", function (this: Knex.QueryBuilder) {
-    this.select("id")
-      .from("registry")
-      .where("name", registerName);
+    this.select("id").from("registry").where("name", registerName);
   });
 }
