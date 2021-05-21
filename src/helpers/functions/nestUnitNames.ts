@@ -4,7 +4,10 @@ import {
   OptsTu,
 } from "../../models/registerData/unitNames";
 
-export const nestTuNames = (tu_names: TuName[], opts_tu: OptsTu[]) => {
+export const nestTuNames = (
+  tu_names: TuName[],
+  opts_tu: OptsTu[]
+): NestedTreatmentUnitName[] => {
   const opts_rhf = opts_tu.filter((opts) => opts.label === "RHF")[0].options;
 
   const opts_hf = opts_tu.filter((opts) => opts.label === "HF")[0].options;

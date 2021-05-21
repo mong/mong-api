@@ -3,7 +3,7 @@ import { OptsTu, TuName } from "../../models/registerData/unitNames";
 export const createOptsTu = (
   distinctUnitNames: { unit_name: string }[],
   allUnitNames: TuName[]
-) => {
+): OptsTu[] => {
   const dunArray = distinctUnitNames.map((names) => names.unit_name);
 
   const opts_hosp = allUnitNames
