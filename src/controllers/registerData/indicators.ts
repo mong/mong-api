@@ -26,7 +26,7 @@ function parseQuery(req: Request): Query {
       query.filter.unit_level = req.query.unit_level;
     }
     if (Array.isArray(req.query.unit_name)) {
-      const unit_name = req.query.unit_name.map((q: any) => String(q));
+      const unit_name = req.query.unit_name as string[];
       query.filter.unit_name = unit_name;
     }
     if (typeof req.query.year === "string") {
