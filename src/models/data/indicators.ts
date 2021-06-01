@@ -34,6 +34,9 @@ function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
   if (filter?.unit_name) {
     builder.whereIn("unit_name", filter.unit_name);
   }
+  if (filter?.context) {
+    builder.where("context", filter.context);
+  }
   if (filter?.register) {
     builder.whereIn("ind_id", function (this: Knex.QueryBuilder) {
       this.select("ind.id")

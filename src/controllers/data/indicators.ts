@@ -33,6 +33,9 @@ function parseQuery(req: Request): Query {
       const year = Number(req.query.year) || undefined;
       query.filter.year = year;
     }
+    if (typeof req.query.context === "string") {
+      query.filter.context = req.query.context;
+    }
     query.filter.register = req.params.register;
   }
 
