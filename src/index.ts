@@ -17,9 +17,11 @@ const PORT = process.env.PORT ?? 4000;
 const app = express();
 
 app.use(cors());
-app.use(compression({
-  level: 6
-}))
+app.use(
+  compression({
+    level: 6,
+  })
+);
 app.use(express.json());
 
 const BROWSER_MAX_AGE = 60 * 60;
