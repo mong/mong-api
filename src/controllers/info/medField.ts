@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { medField } from "../../models/registerInfo";
+import { medField } from "../../models/info";
 
 export const medicalFields: RequestHandler = async (_, res) => {
   try {

@@ -1,5 +1,5 @@
 import { RequestHandler, Request } from "express";
-import { indicatorsModel, Filter } from "../../models/registerData";
+import { indicatorsModel, Filter } from "../../models/data";
 
 export const indicatorsContoller: RequestHandler = async (req, res) => {
   const query = parseQuery(req);

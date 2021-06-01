@@ -2,7 +2,7 @@ import {
   TuName,
   NestedTreatmentUnitName,
   OptsTu,
-} from "../../models/registerData/unitNames";
+} from "../../models/data/unitNames";
 
 export const nestTuNames = (
   tu_names: TuName[],

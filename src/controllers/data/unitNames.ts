@@ -3,7 +3,7 @@ import {
   distinctUnitNamesRegister,
   unitNamesAllLevels,
   Filter,
-} from "../../models/registerData";
+} from "../../models/data";
 import { createOptsTu, nestTuNames } from "../../helpers/functions";
 
 interface Query {

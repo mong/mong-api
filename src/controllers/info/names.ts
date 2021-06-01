@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { registerNamesModel } from "../../models/registerInfo";
+import { registerNamesModel } from "../../models/info";
 
 export const registerNames: RequestHandler = async (req, res) => {
   try {

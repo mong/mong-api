@@ -3,7 +3,7 @@ import {
   descriptionController,
   indicatorsContoller,
   unitNamesContoller,
-} from "../controllers/registerData";
+} from "../controllers/data";
 
 const Router = express.Router();
 

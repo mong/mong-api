@@ -3,8 +3,8 @@ import compression from "compression";
 import cors from "cors";
 
 //router
-import registerInfoRouter from "./routes/registerInfo";
-import registerDataRouter from "./routes/registerData";
+import registerInfoRouter from "./routes/info";
+import registerDataRouter from "./routes/data";
 
 //controller
 import * as Description from "./controllers/Description";
