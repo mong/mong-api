@@ -16,7 +16,7 @@ import * as TuName from "./controllers/TuName";
 const PORT = process.env.PORT ?? 4000;
 
 const app = express();
-app.use(helmet())
+app.use(helmet());
 app.use(cors());
 app.use(
   compression({
