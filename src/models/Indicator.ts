@@ -34,4 +34,3 @@ function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
     builder.andWhere("unit_level", filter.unit_level);
   }
 }
-
