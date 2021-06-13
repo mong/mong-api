@@ -21,12 +21,12 @@ export interface Indicator {
 
 export const all = (filter?: Filter): Promise<Indicator[]> =>
   db
-    .select("agg_data.*")
+    .select("agg_data.*", "ind.id", "ind.include", "ind.type")
     .from("agg_data")
     .leftJoin("ind", "agg_data.ind_id", "ind.id")
     .where("include", 1)
     .where("context", "caregiver")
-    .whereNot("type", "dg")
+    .whereNotIn("type", ["dg", "dg_andel"])
     .modify(withFilter, filter);
 
 function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
