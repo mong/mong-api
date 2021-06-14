@@ -46,6 +46,14 @@ function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
         .modify(registerFilter, filter.register ?? "");
     });
   }
+  if (filter?.type) {
+    if (filter.type === "dg") {
+      builder.whereIn("type", ["dg", "dg_andel"]);
+    }
+    if (filter.type === "ind") {
+      builder.whereNotIn("type", ["dg", "dg_andel"]);
+    }
+  }
 }
 
 function registerFilter(builder: Knex.QueryBuilder, registerName: string) {
