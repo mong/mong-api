@@ -36,8 +36,10 @@ function parseQuery(req: Request): Query {
     if (typeof req.query.context === "string") {
       query.filter.context = req.query.context;
     }
+    if (typeof req.query.type === "string") {
+      query.filter.type = req.query.type;
+    }
     query.filter.register = req.params.register;
   }
-
   return query;
 }

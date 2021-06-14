@@ -37,6 +37,14 @@ function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
   if (filter?.context) {
     builder.where("context", filter.context);
   }
+  if (filter?.type) {
+    if (filter.type === "dg") {
+      builder.whereIn("type", ["dg", "dg_andel"]);
+    }
+    if (filter.type === "ind") {
+      builder.whereNotIn("type", ["dg", "dg_andel"]);
+    }
+  }
   if (filter?.register) {
     builder.whereIn("ind_id", function (this: Knex.QueryBuilder) {
       this.select("ind.id")
