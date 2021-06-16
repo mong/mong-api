@@ -1,5 +1,5 @@
 import { RequestHandler, Request } from "express";
-import { indicatorsModel, Filter } from "../../models/registerData";
+import { indicatorsModel, Filter } from "../../models/data";
 
 export const indicatorsContoller: RequestHandler = async (req, res) => {
   const query = parseQuery(req);
@@ -33,8 +33,13 @@ function parseQuery(req: Request): Query {
       const year = Number(req.query.year) || undefined;
       query.filter.year = year;
     }
+    if (typeof req.query.context === "string") {
+      query.filter.context = req.query.context;
+    }
+    if (typeof req.query.type === "string") {
+      query.filter.type = req.query.type;
+    }
     query.filter.register = req.params.register;
   }
-
   return query;
 }

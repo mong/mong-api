@@ -1,6 +1,6 @@
 import { Knex } from "knex";
 import db from "../../db";
-import { Filter } from "../registerData";
+import { Filter } from ".";
 
 export interface Description {
   id: string;

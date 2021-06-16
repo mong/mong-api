@@ -8,4 +8,5 @@ export interface Filter {
   unit_name?: string[];
   register?: string;
   type?: string;
+  context?: string;
 }

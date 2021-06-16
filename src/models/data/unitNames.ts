@@ -1,6 +1,6 @@
 import { Knex } from "knex";
 import db from "../../db";
-import { Filter } from "../registerData";
+import { Filter } from ".";
 
 export interface TuName {
   hospital: string;
@@ -34,6 +34,7 @@ export const distinctUnitNamesRegister = (
     .from("agg_data")
     .leftJoin("ind", "agg_data.ind_id", "ind.id")
     .where("include", 1)
+    .where("context", filter!.context ?? "")
     .where("year", ">", 2016)
     .modify(withFilter, filter);
 
@@ -44,6 +45,14 @@ function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
         .from("ind")
         .modify(registerFilter, filter.register ?? "");
     });
+  }
+  if (filter?.type) {
+    if (filter.type === "dg") {
+      builder.whereIn("type", ["dg", "dg_andel"]);
+    }
+    if (filter.type === "ind") {
+      builder.whereNotIn("type", ["dg", "dg_andel"]);
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 import { Knex } from "knex";
 import db from "../../db";
-import { Filter } from "../registerData";
+import { Filter } from ".";
 
 export interface Indicator {
   ind_id: string;
@@ -33,6 +33,17 @@ function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
   }
   if (filter?.unit_name) {
     builder.whereIn("unit_name", filter.unit_name);
+  }
+  if (filter?.context) {
+    builder.where("context", filter.context);
+  }
+  if (filter?.type) {
+    if (filter.type === "dg") {
+      builder.whereIn("type", ["dg", "dg_andel"]);
+    }
+    if (filter.type === "ind") {
+      builder.whereNotIn("type", ["dg", "dg_andel"]);
+    }
   }
   if (filter?.register) {
     builder.whereIn("ind_id", function (this: Knex.QueryBuilder) {

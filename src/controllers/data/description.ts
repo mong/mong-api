@@ -1,5 +1,5 @@
 import { RequestHandler, Request } from "express";
-import { descriptionModel, Filter } from "../../models/registerData";
+import { descriptionModel, Filter } from "../../models/data";
 
 export const descriptionController: RequestHandler = async (req, res) => {
   try {

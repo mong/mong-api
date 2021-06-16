@@ -3,11 +3,11 @@ import {
   distinctUnitNamesRegister,
   unitNamesAllLevels,
   Filter,
-} from "../../models/registerData";
+} from "../../models/data";
 import { createOptsTu, nestTuNames } from "../../helpers/functions";
 
 interface Query {
-  filter?: Filter;
+  filter: Filter;
 }
 
 export const unitNamesContoller: RequestHandler = async (req, res) => {
@@ -30,11 +30,16 @@ export const unitNamesContoller: RequestHandler = async (req, res) => {
 };
 
 function parseQuery(req: Request): Query {
-  const query: Query = {};
+  const query: Query = { filter: {} };
 
   if (typeof req.query === "object" && !Array.isArray(req.query)) {
-    query.filter = {};
     query.filter.register = req.params.register;
+  }
+  if (typeof req.query.context === "string") {
+    query.filter.context = req.query.context;
+  }
+  if (typeof req.query.type === "string") {
+    query.filter.type = req.query.type;
   }
 
   return query;
