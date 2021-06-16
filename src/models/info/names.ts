@@ -5,7 +5,7 @@ export interface RegisterName {
   rname: string;
   full_name: string;
   caregiver_data: 0 | 1 | null;
-  recident_data: 0 | 1 | null;
+  resident_data: 0 | 1 | null;
   dg_data: 0 | 1 | null;
   url: string | null;
   description: string | null;
