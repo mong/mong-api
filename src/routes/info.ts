@@ -1,5 +1,5 @@
 import express from "express";
-import { medicalFields, registerNames } from "../controllers/registerInfo";
+import { medicalFields, registerNames } from "../controllers/info";
 
 const Router = express.Router();
 

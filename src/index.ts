@@ -1,9 +1,11 @@
 import express, { RequestHandler } from "express";
+import compression from "compression";
+import helmet from "helmet";
 import cors from "cors";
 
 //router
-import registerInfoRouter from "./routes/registerInfo";
-import registerDataRouter from "./routes/registerData";
+import registerInfoRouter from "./routes/info";
+import registerDataRouter from "./routes/data";
 
 //controller
 import * as Description from "./controllers/Description";
@@ -14,8 +16,13 @@ import * as TuName from "./controllers/TuName";
 const PORT = process.env.PORT ?? 4000;
 
 const app = express();
-
+app.use(helmet());
 app.use(cors());
+app.use(
+  compression({
+    level: 6,
+  })
+);
 app.use(express.json());
 
 const BROWSER_MAX_AGE = 60 * 60;
@@ -27,7 +34,6 @@ const cache: RequestHandler = (req, res, next) => {
   );
   next();
 };
-
 // Routes
 app.use("/data", cache, registerDataRouter);
 app.use("/info", cache, registerInfoRouter);
