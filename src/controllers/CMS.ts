@@ -54,12 +54,6 @@ export const auth: RequestHandler = (req, res) => {
  * @returns {Express.Response}
  */
 export const callback: RequestHandler = async (req, res) => {
-  const error = req.query.error;
-
-  if (error) {
-    return res.send(req.query.error_description);
-  }
-
   const code = req.query.code;
 
   if (typeof code !== "string") {
