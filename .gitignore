@@ -28,6 +28,8 @@ npm-debug.log
 
 /storybook-static
 
+.env
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
