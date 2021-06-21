@@ -34,6 +34,7 @@ export const distinctUnitNamesRegister = (
     .from("agg_data")
     .leftJoin("ind", "agg_data.ind_id", "ind.id")
     .where("include", 1)
+    .whereNot("unit_name", "LIKE", "Udefinerte%")
     .where("context", filter!.context ?? "")
     .where("year", ">", 2016)
     .modify(withFilter, filter);
