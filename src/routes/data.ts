@@ -3,6 +3,7 @@ import {
   descriptionController,
   indicatorsContoller,
   unitNamesContoller,
+  selectionYearsContoller,
 } from "../controllers/data";
 
 const Router = express.Router();
@@ -15,5 +16,7 @@ Router.get("/:register/indicators", indicatorsContoller);
 
 //reg all-all eller per register
 Router.get("/:register/unitNames", unitNamesContoller);
+
+Router.get("/:register/years", selectionYearsContoller);
 
 export default Router;
