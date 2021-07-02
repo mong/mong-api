@@ -53,7 +53,7 @@ export const medField: MedFieldInterface[] = [
     shortName: "muskel",
     name: "Muskel og skjelett",
     registers: [
-      "hofte_barn",
+      "barnehofte",
       "hoftebrudd",
       "korsband",
       "ryggkir",
@@ -125,13 +125,13 @@ export const medField: MedFieldInterface[] = [
     name: "Barn",
     registers: [
       "cp",
-      "hofte_barn",
+      "barnehofte",
       "barnekreft",
       "barnediabetes",
       "lkg",
       "nnk",
     ],
-  } /*,
+  },
   {  
     shortName: "annet",
     name: "Andre",
@@ -139,5 +139,5 @@ export const medField: MedFieldInterface[] = [
       "smerte",
       "porfyri"
     ]
-  }  */,
+  },
 ];
