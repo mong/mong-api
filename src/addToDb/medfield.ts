@@ -96,20 +96,20 @@ export const medField: MedFieldInterface[] = [
     name: "Rehabilitering",
     registers: ["nnrr", "norscir"],
   },
-  {  
-    shortName: "onh", 
+  {
+    shortName: "onh",
     name: "Øre-nese-hals",
-    registers: ["tonsille"]
+    registers: ["tonsille"],
   } /*,
   {  
     shortName: "hud",
     name: "Hudsykdommer",
     registers: ["hisreg"]
   },*/,
-  {  
+  {
     shortName: "psyk",
     name: "Psykisk helse og rus",
-    registers: ["kvarus","norspis"]
+    registers: ["kvarus", "norspis"],
   },
   /*  {
     shortName: "autoimmun",
@@ -132,12 +132,9 @@ export const medField: MedFieldInterface[] = [
       "nnk",
     ],
   },
-  {  
+  {
     shortName: "annet",
     name: "Andre",
-    registers:[
-      "smerte",
-      "porfyri"
-    ]
+    registers: ["smerte", "porfyri"],
   },
 ];
