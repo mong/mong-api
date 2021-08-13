@@ -2,12 +2,12 @@ FROM node:16.6.1-alpine as builder
 WORKDIR /app
 COPY package*.json ./
 COPY . .
-RUN npm install && npm run build
+RUN yarn install && yarn run build
 
 FROM node:16.6.1-alpine
 WORKDIR /app
 COPY package*.json ./
-RUN npm install --only=production
+RUN yarn install --only=production
 COPY --from=builder /app/build ./build
 EXPOSE 80
 ENV NODE_ENV=production
