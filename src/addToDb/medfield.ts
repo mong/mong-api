@@ -33,12 +33,12 @@ export const medField: MedFieldInterface[] = [
       "tarmkreft_colon",
       "tarmkreft_rectum",
     ],
-  } /*,
+  },
   {
     shortName: "luft",
     name: "Luftveier",
-    registers: ["mek_vent"]
-  }*/,
+    registers: ["mek_vent"],
+  },
   {
     shortName: "diabetes",
     name: "Diabetes",
