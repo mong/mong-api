@@ -23,6 +23,7 @@ jobs:
           echo "env_name=prod-mong-api" >> $GITHUB_ENV
           echo "version_label=${GITHUB_REF:10:6}" >> $GITHUB_ENV
           echo "descr='Release tag deploy'" >> $GITHUB_ENV
+          echo "cloudfront_id=${{ secrets.CLOUDFRONT_ID_PROD }}" >> $GITHUB_ENV
       - name: Set QA variables
         if: github.event_name == 'push'
         run: |
@@ -30,6 +31,7 @@ jobs:
           echo "env_name=qa-mong-api" >> $GITHUB_ENV
           echo "version_label=${GITHUB_SHA:0:7}" >> $GITHUB_ENV
           echo "descr='Master commits deploy'" >> $GITHUB_ENV
+          echo "cloudfront_id=${{ secrets.CLOUDFRONT_ID_QA }}" >> $GITHUB_ENV
       - name: Check out the repo
         uses: actions/checkout@v2
       - name: Lint Dockerfile
@@ -70,3 +72,9 @@ jobs:
           if [[ ${{ github.event_name }} == release ]]; then
             aws elasticbeanstalk update-environment --environment-name verify-mong-api --version-label ${{ env.version_label }}
           fi
+      - name: Create CloudFront invalidation
+        if: github.event_name != 'pull_request'
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id  ${{ env.cloudfront_id }}\
+            --paths "/*"
