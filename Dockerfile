@@ -7,7 +7,7 @@ RUN yarn install && yarn run build
 FROM node:16.6.1-alpine
 WORKDIR /app
 COPY package*.json ./
-RUN yarn install --only=production
+RUN yarn install --only=production && yarn cache clean
 COPY --from=builder /app/build ./build
 EXPOSE 80
 ENV NODE_ENV=production
