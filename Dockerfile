@@ -1,10 +1,10 @@
-FROM node:16.6.2-alpine as builder
+FROM node:16.7.0-alpine as builder
 WORKDIR /app
 COPY package*.json ./
 COPY . .
 RUN yarn install && yarn run build
 
-FROM node:16.6.2-alpine
+FROM node:16.7.0-alpine
 WORKDIR /app
 COPY package*.json ./
 RUN yarn install --only=production && yarn cache clean
