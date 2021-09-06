@@ -100,27 +100,28 @@ export const medField: MedFieldInterface[] = [
     shortName: "onh",
     name: "Øre-nese-hals",
     registers: ["tonsille"],
-  } /*,
-  {  
+  },
+  {
     shortName: "hud",
     name: "Hudsykdommer",
-    registers: ["hisreg"]
-  },*/,
+    registers: ["hisreg"],
+  },
   {
     shortName: "psyk",
     name: "Psykisk helse og rus",
     registers: ["kvarus", "norspis"],
   },
-  /*  {
+  {
     shortName: "autoimmun",
     name: "Autoimmune sykdommer",
     registers: ["roas", "norvas"],
-  },*/
-  /*  {
+  },
+  {
     shortName: "revma",
     name: "Revmatologi",
     registers: ["norartritt", "norvas"],
-  }*/ {
+  },
+  {
     shortName: "barn",
     name: "Barn",
     registers: [
