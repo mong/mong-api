@@ -5,7 +5,7 @@ on:
   push:
     branches: [master]
   pull_request:
-    branches: [master]
+    branches: [master, dependabot_updates]
 
 jobs:
   push_to_registries:
