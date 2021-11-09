@@ -12,7 +12,8 @@ export const selectionYearsContoller: RequestHandler = async (req, res) => {
     const selectionYears = await selectionYearsModel(query.filter);
     res.json(selectionYears.map((d) => d.year));
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    const typed_err = err as any;
+    res.status(500).json({ message: typed_err.message });
   }
 };
 
