@@ -8,7 +8,8 @@ export const descriptionController: RequestHandler = async (req, res) => {
     const rows = await descriptionModel(register, query.filter);
     res.json(rows);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    const typed_err = err as any;
+    res.status(500).json({ message: typed_err.message });
   }
 };
 
