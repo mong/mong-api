@@ -185,12 +185,12 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.2.tgz#423c77877d0569db20e1fc80885ac4118314010e"
   integrity sha512-eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==
 
-"@types/apicache@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@types/apicache/-/apicache-1.6.0.tgz#d4ba7d75f9b6ebcef24f42741b38535815ce1074"
-  integrity sha512-tFl/w1qvBrdpa/A4VasojDXgrKhaxk8UvIgenkgHmiAXl5MXxPbmveuiHhQBR6NdDAIWBSQ3UFiR9wadQVUTuQ==
+"@types/apicache@^1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@types/apicache/-/apicache-1.6.1.tgz#b5875b54af6b53be1ac64b2bbc14fe7abfb984f0"
+  integrity sha512-vNUh8lponMjIOPGVp04xf9avb5lJTR6qSW3IS3ROmugMFLvNXwI3nPC1JnnoA6zyEC7HHqW0LGfuLSue32C9dQ==
   dependencies:
-    "@types/redis" "*"
+    "@types/redis" "^2.8.0"
 
 "@types/body-parser@*":
   version "1.19.1"
@@ -263,10 +263,10 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
-"@types/redis@*":
-  version "2.8.31"
-  resolved "https://registry.yarnpkg.com/@types/redis/-/redis-2.8.31.tgz#c11c1b269fec132ac2ec9eb891edf72fc549149e"
-  integrity sha512-daWrrTDYaa5iSDFbgzZ9gOOzyp2AJmYK59OlG/2KGBgYWF3lfs8GDKm1c//tik5Uc93hDD36O+qLPvzDolChbA==
+"@types/redis@^2.8.0":
+  version "2.8.32"
+  resolved "https://registry.yarnpkg.com/@types/redis/-/redis-2.8.32.tgz#1d3430219afbee10f8cfa389dad2571a05ecfb11"
+  integrity sha512-7jkMKxcGq9p242exlbsVzuJb57KqHRhNl4dHoQu2Y5v9bCAbtIXXH0R3HleSQW4CTOqpHIYUW3t6tpUj4BVQ+w==
   dependencies:
     "@types/node" "*"
 
