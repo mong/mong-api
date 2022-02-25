@@ -12,4 +12,5 @@ COPY --from=builder /app/build ./build
 EXPOSE 80
 ENV NODE_ENV=production
 ENV PORT=80
+ENV VERSION=1.4.9
 CMD ["node", "build"]
