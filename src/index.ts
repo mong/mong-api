@@ -58,7 +58,7 @@ app.use("/data", cache, registerDataRouter);
 app.use("/info", cache, registerInfoRouter);
 
 app.get("/", (_, res) =>
-  res.json({ status: "OK", version: process.env.npm_package_version })
+  res.json({ status: "OK", version: process.env.VERSION ?? "local" })
 );
 
 app.get("/description", cache, Description.index);
