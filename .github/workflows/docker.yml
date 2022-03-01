@@ -33,7 +33,7 @@ jobs:
           echo "descr='Master commits deploy'" >> $GITHUB_ENV
           echo "cloudfront_id=${{ secrets.CLOUDFRONT_ID_QA }}" >> $GITHUB_ENV
       - name: Check out the repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Lint Dockerfile
         uses: brpaz/hadolint-action@master
         with:
