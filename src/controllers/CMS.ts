@@ -81,7 +81,7 @@ export const callback: RequestHandler = async (req, res) => {
       (function() {
         function receiveMessage(e) {
           console.log("receiveMessage %o", e)
-          if (!e.origin.match(${JSON.stringify(originPattern)})) {
+          if (!${JSON.stringify(originPattern)}.includes(e.origin)) {
             console.log('Invalid origin: %s', e.origin);
             return;
           }
