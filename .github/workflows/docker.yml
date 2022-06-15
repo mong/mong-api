@@ -3,9 +3,9 @@ on:
   release:
     types: [published]
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master, dependabot_updates]
+    branches: [main, dependabot_updates]
 
 jobs:
   push_to_registries:
@@ -30,12 +30,12 @@ jobs:
           echo "S3Key='qa-Dockerrun.aws.json'" >> $GITHUB_ENV
           echo "env_name=qa-mong-api" >> $GITHUB_ENV
           echo "version_label=${GITHUB_SHA:0:7}" >> $GITHUB_ENV
-          echo "descr='Master commits deploy'" >> $GITHUB_ENV
+          echo "descr='Main commits deploy'" >> $GITHUB_ENV
           echo "cloudfront_id=${{ secrets.CLOUDFRONT_ID_QA }}" >> $GITHUB_ENV
       - name: Check out the repo
         uses: actions/checkout@v3
       - name: Lint Dockerfile
-        uses: brpaz/hadolint-action@master
+        uses: brpaz/hadolint-action@v2.1.0
         with:
           dockerfile: "Dockerfile"
       - name: Prepare
