@@ -1,22 +1,36 @@
 import { RequestHandler } from "express";
 import { medField } from "../../models/info";
+import { registerNames } from "./names";
 
 export const medicalFields: RequestHandler = async (_, res) => {
   try {
     const rows = await medField();
-    const emptyArray: {shortName?: string,
-    name?: string,
-    registers?: string[]}[] = []
+    const emptyArray: {
+      shortName?: string;
+      name?: string;
+      registers?: string[];
+    }[] = [];
 
     const testvalue = rows.reduce((prevVal, currVal) => {
-      const returnValue = prevVal.some(val => val.shortName === currVal.shortName) ?
-      prevVal.filter(val => val.shortName === currVal.shortName).map(val => val.registers?.push(currVal.registers)) : 
-      [...prevVal, {
-        shortName: currVal.shortName,
-        name: currVal.name,
-        registers: [currVal.registers],
-      }];
-      return returnValue;
+      prevVal
+        .filter((val) => val.shortName === currVal.shortName)
+        .forEach(
+          (val) =>
+            (val.registers = [...(val.registers ?? []), currVal.registers])
+        );
+      const returnValue = prevVal.some(
+        (val) => val.shortName === currVal.shortName
+      )
+        ? []
+        : [
+            {
+              shortName: currVal.shortName,
+              name: currVal.name,
+              registers: [currVal.registers],
+            },
+          ];
+
+      return [...prevVal, ...returnValue];
     }, emptyArray);
 
     res.json(testvalue);
