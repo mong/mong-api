@@ -34,7 +34,8 @@ export const medicalFields: RequestHandler = async (_, res) => {
 
     res.json(testvalue);
   } catch (error) {
-    const error_message = error instanceof Error ? error.message : String(error);
+    const error_message =
+      error instanceof Error ? error.message : String(error);
     res.status(500).json({ message: error_message });
   }
 };

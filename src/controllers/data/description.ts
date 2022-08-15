@@ -8,7 +8,8 @@ export const descriptionController: RequestHandler = async (req, res) => {
     const rows = await descriptionModel(register, query.filter);
     res.json(rows);
   } catch (error) {
-    const error_message = error instanceof Error ? error.message : String(error);
+    const error_message =
+      error instanceof Error ? error.message : String(error);
     res.status(500).json({ message: error_message });
   }
 };

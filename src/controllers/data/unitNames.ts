@@ -25,7 +25,8 @@ export const unitNamesContoller: RequestHandler = async (req, res) => {
     };
     res.json(rows);
   } catch (error) {
-    const error_message = error instanceof Error ? error.message : String(error);
+    const error_message =
+      error instanceof Error ? error.message : String(error);
     res.status(500).json({ message: error_message });
   }
 };
