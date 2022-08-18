@@ -35,9 +35,7 @@ export const distinctUnitNamesRegister = (
     .where("include", 1)
     .whereRaw("denominator >= min_denominator")
     .where(function () {
-      this
-        .where("dg", ">=", 0.7)
-        .orWhereNull("dg")
+      this.where("dg", ">=", 0.7).orWhereNull("dg");
     })
     .whereNot("unit_name", "LIKE", "Udefinerte%")
     .where("context", filter!.context ?? "")
