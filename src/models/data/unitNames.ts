@@ -33,7 +33,7 @@ export const distinctUnitNamesRegister = (
     .from("agg_data")
     .leftJoin("ind", "agg_data.ind_id", "ind.id")
     .where("include", 1)
-//    .whereRaw("denominator >= min_denominator")
+    .whereRaw("denominator >= min_denominator")
     .where(function () {
       this
         .where("dg", ">=", 0.7)
