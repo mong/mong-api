@@ -14,14 +14,16 @@ export interface Indicator {
   level_direction: number | null;
   dg?: number;
   include: number | null;
+  min_denominator: number;
 }
 
 export const indicatorsModel = (filter?: Filter): Promise<Indicator[]> =>
   db
-    .select("agg_data.*", "ind.type", "ind.include")
+    .select("agg_data.*", "ind.type", "ind.include", "ind.min_denominator")
     .from("agg_data")
     .leftJoin("ind", "agg_data.ind_id", "ind.id")
     .where("include", 1)
+    .whereRaw("denominator >= min_denominator")
     .whereNot("unit_name", "LIKE", "Udefinerte%")
     .modify(withFilter, filter);
 
