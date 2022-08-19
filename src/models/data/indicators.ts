@@ -23,7 +23,11 @@ export const indicatorsModel = (filter?: Filter): Promise<Indicator[]> =>
     .from("agg_data")
     .leftJoin("ind", "agg_data.ind_id", "ind.id")
     .where("include", 1)
-    .whereRaw("denominator >= min_denominator")
+    .where(function () {
+      this.whereRaw("denominator >= min_denominator").orWhereNull(
+        "min_denominator"
+      );
+    })
     .whereNot("unit_name", "LIKE", "Udefinerte%")
     .modify(withFilter, filter);
 
