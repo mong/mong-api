@@ -26,7 +26,7 @@ export const all = (filter?: Filter): Promise<Indicator[]> =>
     .leftJoin("ind", "agg_data.ind_id", "ind.id")
     .where("include", 1)
     .where("context", "caregiver")
-    .whereNotIn("type", ["dg", "dg_andel"])
+    .whereNotIn("type", ["dg", "dg_andel", "dg_beregnet_andel"])
     .modify(withFilter, filter);
 
 function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
