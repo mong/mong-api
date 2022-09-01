@@ -186,14 +186,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@redis/client@npm:1.2.0":
-  version: 1.2.0
-  resolution: "@redis/client@npm:1.2.0"
+"@redis/client@npm:1.3.0":
+  version: 1.3.0
+  resolution: "@redis/client@npm:1.3.0"
   dependencies:
     cluster-key-slot: 1.1.0
     generic-pool: 3.8.2
     yallist: 4.0.0
-  checksum: 098a550a6728d9d3babb432a1c32f1678cbda5ad7fa3d59316fc334be42ef05d778fc4cf2e3d873a34817447870a5fc0486e62793698a279404b3b086ba7422e
+  checksum: 3f935cdffeecbf999ea9e03115af7d95421078a58b3a5aa74afb2d0f90b6e203726753b4aeea5d2f1483c42bf3f64a6794375b2e10873829c2b7641cf179ad84
   languageName: node
   linkType: hard
 
@@ -215,12 +215,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@redis/search@npm:1.0.6":
-  version: 1.0.6
-  resolution: "@redis/search@npm:1.0.6"
+"@redis/search@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@redis/search@npm:1.1.0"
   peerDependencies:
     "@redis/client": ^1.0.0
-  checksum: 5c776143520b11ae2e49a05e7fe3df514a01460f2be90759b15e4f097bf4a985784c48c2184ac2c275ced3ec5a0c77b208a4d46a50161d1ad6025e3ab2990aa7
+  checksum: dc0f1c8234580fb839e1135f76a70654461cb03be8918799a2a0cd79dd9815e0978feb99bcc01f5be37dabd95460f6cdba9f61a90a4d39183205883e12855afd
   languageName: node
   linkType: hard
 
@@ -682,7 +682,7 @@ __metadata:
     knex: 2.2.0
     mysql: 2.18.1
     prettier: 2.7.1
-    redis: 4.2.0
+    redis: 4.3.0
     simple-oauth2: 4.3.0
     ts-node: 10.9.1
     ts-node-dev: 2.0.0
@@ -2683,17 +2683,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"redis@npm:4.2.0":
-  version: 4.2.0
-  resolution: "redis@npm:4.2.0"
+"redis@npm:4.3.0":
+  version: 4.3.0
+  resolution: "redis@npm:4.3.0"
   dependencies:
     "@redis/bloom": 1.0.2
-    "@redis/client": 1.2.0
+    "@redis/client": 1.3.0
     "@redis/graph": 1.0.1
     "@redis/json": 1.0.3
-    "@redis/search": 1.0.6
+    "@redis/search": 1.1.0
     "@redis/time-series": 1.0.3
-  checksum: 6c35b56c6b685e82973c5698c5736c07ccbc59f3bc18d8de61e45ead2df4b8fc82062e5618452f4d3f8c23f02ff8c0b847c8d6a681f909c403a0fb96adcc2b98
+  checksum: f5da538cbd79e864e2df7197c9fda1a2d8d4df3be1bdfd3a62a80c0be19b30616f366587e92cdb94b5c027cef4640ff1fc2f1d98873792545ef5f9b1ca53513f
   languageName: node
   linkType: hard
 
