@@ -684,7 +684,7 @@ __metadata:
     dotenv: 16.0.2
     eslint: 8.23.0
     express: 4.18.1
-    express-rate-limit: 6.5.1
+    express-rate-limit: 6.5.2
     helmet: 6.0.0
     knex: 2.3.0
     mysql: 2.18.1
@@ -1387,12 +1387,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express-rate-limit@npm:6.5.1":
-  version: 6.5.1
-  resolution: "express-rate-limit@npm:6.5.1"
+"express-rate-limit@npm:6.5.2":
+  version: 6.5.2
+  resolution: "express-rate-limit@npm:6.5.2"
   peerDependencies:
     express: ^4 || ^5
-  checksum: 2a57a3f774e8da26e7b10d5f99fc2c53adebbd8788ab2eff5f4aeb650fd1e099a8961d396b7ebd0c314c5d4a9b4b4ae69d52bb991355823fd7ff0522bdbfe854
+  checksum: 20ce3cc0d58b9fcab5a427c100315c8e4467e0a43877fe4341bfefae8df627949efe1c98c16ee9b7d6ed4f19f0d06df8485f52bb81b490ffb534d1cbc3cd21f7
   languageName: node
   linkType: hard
 
