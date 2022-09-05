@@ -38,6 +38,7 @@ app.use((req, res, next) => {
 
 app.use(
   helmet({
+    crossOriginOpenerPolicy: false,
     contentSecurityPolicy: {
       useDefaults: true,
       directives: {
