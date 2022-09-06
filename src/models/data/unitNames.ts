@@ -30,10 +30,17 @@ export const distinctUnitNamesRegister = (
   filter?: Filter
 ): Promise<{ unit_name: string }[]> =>
   db
-    .distinct("agg_data.unit_name")
     .from("agg_data")
     .leftJoin("ind", "agg_data.ind_id", "ind.id")
     .where("include", 1)
+    .where(function () {
+      this.whereRaw("denominator >= min_denominator").orWhereNull(
+        "min_denominator"
+      );
+    })
+    .where(function () {
+      this.where("dg", ">=", 0.7).orWhereNull("dg");
+    })
     .whereNot("unit_name", "LIKE", "Udefinerte%")
     .where("context", filter!.context ?? "")
     .where("year", ">", 2016)
