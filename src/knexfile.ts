@@ -13,7 +13,7 @@ const connections: { [env: string]: Knex.Config } = {
     client: "mysql",
     connection: {
       host: "127.0.0.1",
-      user: "imongr",
+      user: "root",
       password: "imongr",
       database: "imongr",
     },

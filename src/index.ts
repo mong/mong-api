@@ -10,11 +10,6 @@ import rateLimit from "express-rate-limit";
 import registerInfoRouter from "./routes/info";
 import registerDataRouter from "./routes/data";
 
-//controller
-import * as Description from "./controllers/Description";
-import * as Indicator from "./controllers/Indicator";
-import * as TuName from "./controllers/TuName";
-
 const PORT = process.env.PORT ?? 4000;
 
 const app = express();
@@ -72,10 +67,6 @@ app.use("/info", cache, registerInfoRouter);
 app.get("/", (_, res) =>
   res.json({ status: "OK", version: process.env.VERSION ?? "local" })
 );
-
-app.get("/description", cache, Description.index);
-app.get("/indicator", cache, Indicator.index);
-app.get("/tu_name", cache, TuName.index);
 
 // Auth routes for CMS
 app.get("/auth", CMS.auth);
