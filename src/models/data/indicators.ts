@@ -46,10 +46,10 @@ function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
   }
   if (filter?.type) {
     if (filter.type === "dg") {
-      builder.whereIn("type", ["dg", "dg_andel"]);
+      builder.whereIn("type", ["dg", "dg_andel", "dg_beregnet_andel"]);
     }
     if (filter.type === "ind") {
-      builder.whereNotIn("type", ["dg", "dg_andel"]);
+      builder.whereNotIn("type", ["dg", "dg_andel", "dg_beregnet_andel"]);
     }
   }
   if (filter?.register) {

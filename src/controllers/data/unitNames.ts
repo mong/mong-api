@@ -24,9 +24,10 @@ export const unitNamesContoller: RequestHandler = async (req, res) => {
       nestedUnitNames,
     };
     res.json(rows);
-  } catch (err) {
-    const typed_err = err as any;
-    res.status(500).json({ message: typed_err.message });
+  } catch (error) {
+    const error_message =
+      error instanceof Error ? error.message : String(error);
+    res.status(500).json({ message: error_message });
   }
 };
 

@@ -38,12 +38,8 @@ export const distinctUnitNamesRegister = (
         "min_denominator"
       );
     })
-    .where(function () {
-      this.where("dg", ">=", 0.7).orWhereNull("dg");
-    })
     .whereNot("unit_name", "LIKE", "Udefinerte%")
     .where("context", filter!.context ?? "")
-    .where("year", ">", 2016)
     .modify(withFilter, filter);
 
 function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
@@ -54,12 +50,23 @@ function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
         .modify(registerFilter, filter.register ?? "");
     });
   }
+  if (filter?.register === "all") {
+    // Only filter out older years and low dg if all registries.
+    // Some registries were missing dg data on HF level
+    // Some registries were missing data from some units
+    // on new data (dg, only data in 2016 and 2021)
+    builder
+      .where(function () {
+        this.where("dg", ">=", 0.7).orWhereNull("dg");
+      })
+      .where("year", ">=", 2017);
+  }
   if (filter?.type) {
     if (filter.type === "dg") {
-      builder.whereIn("type", ["dg", "dg_andel"]);
+      builder.whereIn("type", ["dg", "dg_andel", "dg_beregnet_andel"]);
     }
     if (filter.type === "ind") {
-      builder.whereNotIn("type", ["dg", "dg_andel"]);
+      builder.whereNotIn("type", ["dg", "dg_andel", "dg_beregnet_andel"]);
     }
   }
 }
