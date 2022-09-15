@@ -59,7 +59,10 @@ function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
       .where(function () {
         this.where("dg", ">=", 0.7).orWhereNull("dg");
       })
-      .where("year", ">=", 2017);
+      .where("year", ">=", 2017)
+      // Filter out some unwanted hospitals. That is made-up hospitals and
+      // hospitals that is only in one register.
+      .whereNotIn("orgnr", [100, 300, 800, 900]);
   }
   if (filter?.type) {
     if (filter.type === "dg") {
