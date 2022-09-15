@@ -72,6 +72,9 @@ function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
       builder.whereNotIn("type", ["dg", "dg_andel", "dg_beregnet_andel"]);
     }
   }
+  if (filter?.year && typeof filter?.year === "number") {
+    builder.where("year", filter.year);
+  }
 }
 
 function registerFilter(builder: Knex.QueryBuilder, registerName: string) {

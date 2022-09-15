@@ -43,6 +43,10 @@ function parseQuery(req: Request): Query {
   if (typeof req.query.type === "string") {
     query.filter.type = req.query.type;
   }
+  if (typeof req.query.year === "string") {
+    const year = Number(req.query.year) || undefined;
+    query.filter.year = year;
+  }
 
   return query;
 }
